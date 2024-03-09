@@ -6,10 +6,10 @@
     <title>Aula 09-03-2024</title>
 </head>
 <body>
-    <forms action="">
-        <input type="text" placeholder="search">
+    <form action="index.php" method="get">
+        <input type="text" placeholder="search" name="S">
         <button type="submit">Search</button>
-    </forms>
+    </form>
     
 </body>
 </html>
