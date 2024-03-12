@@ -6,7 +6,7 @@
     <title>Aula 12-03-2024</title>
 </head>
 <body>
-    <form id="form1" action=".">
+    <form id="form1" action="."  method="post">
         <input type="text" name="someValue">
         <button>GO</button>
     </form>
@@ -14,16 +14,18 @@
     <a href="https://google.com" id="link1" target="_blank">Vai para o Google</a>
 
     <script>
-        const form1 =  document.querySelector("#form1");
+        const form1 = document.querySelector("#form1");
         const link1 = document.querySelector("#link1");
         
-        form1.addEventListener("submit", function (event) {
-            event.preventDefault()  // para nao atualizar a pagina toda vez que enviar o formulario
-        });
+        // form1.addEventListener("submit", function (event) {
+        //  event.preventDefault()  // para nao atualizar a pagina toda vez que enviar o formulario
+        // });
 
         link1.addEventListener("click", function(event){
             event.preventDefault();   //para nao recarregar a pagina toda vez que clicar no botao
         });
+
+
     </script>
 </body>
 </html>
