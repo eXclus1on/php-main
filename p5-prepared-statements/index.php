@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -68,7 +68,7 @@
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row["ID"] . "</td>";
-                    echo "<td>" . $row["Name"] . "</td>";
+                    echo "<td><a href='cityDetail.php?id=" . $row["ID"] . "'>" . $row["Name"] ."</a></td>";
                     echo "<td>" . $row["CountryCode"] . "</td>";
                     echo "<td>" . $row["District"] . "</td>";
                     echo "<td>" . $row["Population"] . "</td>";
