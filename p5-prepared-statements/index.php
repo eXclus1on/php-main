@@ -66,12 +66,16 @@ a<!DOCTYPE html>
                 <?php
                 // Loop para percorrer os resultados e preencher as linhas da tabela
                 while ($row = $result->fetch_assoc()) {
+                    $id  = $row['ID'];
+                    $name    = $row['Name'];
+
                     echo "<tr>";
                     echo "<td>" . $row["ID"] . "</td>";
                     echo "<td><a href='cityDetail.php?id=" . $row["ID"] . "'>" . $row["Name"] ."</a></td>";
                     echo "<td>" . $row["CountryCode"] . "</td>";
                     echo "<td>" . $row["District"] . "</td>";
                     echo "<td>" . $row["Population"] . "</td>";
+                    echo "<td><a href='deleteHandler.php?id=$id'>Excluir</a></td>";
                     echo "</tr>";
                 }
                 ?>
