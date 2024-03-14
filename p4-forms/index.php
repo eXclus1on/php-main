@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 09-03-2024</title>
+    <title>Document</title>
 </head>
 
 <body>
 
     <?php
-    // Verifica se o parâmetro de pesquisa foi enviado via método GET
     $searchTerm = isset($_GET["searchTerm"]) ? $_GET["searchTerm"] : "";
     ?>
 
@@ -21,28 +20,16 @@
     </form>
 
     <?php
-    // Conectar ao banco de dados
     $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
     // DANGER: We should never concatenate directly could lead to SQL INJECTIONS
     // Use parametized queries instead
-
-    // Executar a consulta SQL usando LIKE para procurar correspondências no campo 'Name'
     $result = $mysqli->query("SELECT * FROM city WHERE Name LIKE '%$searchTerm%'");
+
+    $numRows = $result->num_rows;
     ?>
 
-    <?php
-    // Obter o número de resultados encontrados
-    $numResults = $result->num_rows;
-
-    // Verificar se a busca não devolveu resultados
-    if ($numResults === 0) {
-        // Se não houver resultados, exibe uma mensagem e uma imagem indicando que não existem cidades correspondentes
-        echo "<p>Não existem cidades correspondentes à pesquisa.</p>";
-        echo "<img src='imagem_nao_encontrada.jpg' alt='Imagem não encontrada'>";
-    } else {
-        // Se houver resultados, exibe o número de resultados e a tabela com os dados encontrados
-        echo "<p>Encontrados " . $numResults . " resultados.</p>";
-    ?>
+    <?php if ($numRows > 0) { ?>
+        <p>Number of results: <?= $numRows ?></p>
         <table border="1">
             <thead>
                 <tr>
@@ -55,7 +42,6 @@
             </thead>
             <tbody>
                 <?php
-                // Loop para percorrer os resultados e preencher as linhas da tabela
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row["ID"] . "</td>";
@@ -68,19 +54,19 @@
                 ?>
             </tbody>
         </table>
-    <?php
-    }
-    ?>
+    <?php } else { ?>
+        <h2>No cities found!</h2>
+    <?php }  ?>
 
-        <!-- EXERCICIO
+
+
+    <!-- EXERCICIO
         Se a busca nao devolver resultados
         mostrem uma frase e uma imagem...
         a informar que nao existem cidades correspondentes a pesquisa
 
         se existirem cidades mostrem a tabelo como ja esta feito
-        -->
-
+    -->
 </body>
 
 </html>
-

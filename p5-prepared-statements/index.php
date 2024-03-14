@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 09-03-2024</title>
+    <title>Document</title>
 </head>
 
 <body>
-
     <?php
-    // Verifica se o parâmetro de pesquisa foi enviado via método GET
     $searchTerm = isset($_GET["searchTerm"]) ? $_GET["searchTerm"] : "";
     ?>
 
@@ -21,37 +19,22 @@
     </form>
 
     <?php
-    // Conectar ao banco de dados
     $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
-    // DANGER: We should never concatenate directly could lead to SQL INJECTIONS
-    // Use parametized queries instead
-    $statment = $mysqli->prepare("SELECT * FROM city WHERE Name LIKE ?");
+    $statement = $mysqli->prepare("SELECT * FROM city WHERE Name LIKE ?");
 
-    $searchBindParam = "%" . "searchTerm" . " %";
+    $searchBindParam = "%$searchTerm%";
     echo $searchBindParam;
-    $statment->bind_param("s", $searchBindParam);
+    $statement->bind_param("s", $searchBindParam);
 
-    $statment->execute();
-    $result = $statment->get_result();
+    $statement->execute();
 
+    $result = $statement->get_result();
 
-    // Executar a consulta SQL usando LIKE para procurar correspondências no campo 'Name'
-    $result = $mysqli->query("SELECT * FROM city WHERE Name LIKE '%$searchTerm%'");
+    $numRows = $result->num_rows;
     ?>
 
-    <?php
-    // Obter o número de resultados encontrados
-    $numResults = $result->num_rows;
-
-    // Verificar se a busca não devolveu resultados
-    if ($numResults === 0) {
-        // Se não houver resultados, exibe uma mensagem e uma imagem indicando que não existem cidades correspondentes
-        echo "<p>Não existem cidades correspondentes à pesquisa.</p>";
-        echo "<img src='imagem_nao_encontrada.jpg' alt='Imagem não encontrada'>";
-    } else {
-        // Se houver resultados, exibe o número de resultados e a tabela com os dados encontrados
-        echo "<p>Encontrados " . $numResults . " resultados.</p>";
-    ?>
+    <?php if ($numRows > 0) { ?>
+        <p>Number of results: <?= $numRows ?></p>
         <table border="1">
             <thead>
                 <tr>
@@ -60,31 +43,31 @@
                     <th>Country Code</th>
                     <th>District</th>
                     <th>Population Number</th>
-                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                // Loop para percorrer os resultados e preencher as linhas da tabela
                 while ($row = $result->fetch_assoc()) {
-                    $id  = $row['ID'];
-                    $name    = $row['Name'];
+                    $id = $row["ID"];
+                    $name = $row["Name"];
 
                     echo "<tr>";
                     echo "<td>" . $row["ID"] . "</td>";
-                    echo "<td><a href='cityDetail.php?id=" . $row["ID"] . "'>" . $row["Name"] . "</a></td>";
+                    echo "<td><a href='cityDetail.php?id=$id'>$name</a></td>";
                     echo "<td>" . $row["CountryCode"] . "</td>";
                     echo "<td>" . $row["District"] . "</td>";
                     echo "<td>" . $row["Population"] . "</td>";
-                    echo "<td><a href='deleteHandler.php?id=$id'>Delete</a></td>";
+                    echo "<td><a href='deleteHandler.php?id=$id'>❌</a></td>";
                     echo "</tr>";
                 }
                 ?>
             </tbody>
         </table>
-    <?php
-    }
-    ?>
+    <?php } else { ?>
+        <h2>No cities found!</h2>
+    <?php }  ?>
+
+
 
     <!-- EXERCICIO
         Se a busca nao devolver resultados
@@ -92,8 +75,7 @@
         a informar que nao existem cidades correspondentes a pesquisa
 
         se existirem cidades mostrem a tabelo como ja esta feito
-        -->
-
+    -->
 </body>
 
 </html>
