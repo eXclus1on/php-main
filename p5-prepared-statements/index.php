@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,10 +29,10 @@ a<!DOCTYPE html>
 
     $searchBindParam = "%" . "searchTerm" . " %";
     echo $searchBindParam;
-    $statment->bind_param( "s", $searchBindParam);
+    $statment->bind_param("s", $searchBindParam);
 
-    $statment ->  execute();
-    $result = $statment ->  get_result();
+    $statment->execute();
+    $result = $statment->get_result();
 
 
     // Executar a consulta SQL usando LIKE para procurar correspondências no campo 'Name'
@@ -60,6 +60,7 @@ a<!DOCTYPE html>
                     <th>Country Code</th>
                     <th>District</th>
                     <th>Population Number</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,11 +72,11 @@ a<!DOCTYPE html>
 
                     echo "<tr>";
                     echo "<td>" . $row["ID"] . "</td>";
-                    echo "<td><a href='cityDetail.php?id=" . $row["ID"] . "'>" . $row["Name"] ."</a></td>";
+                    echo "<td><a href='cityDetail.php?id=" . $row["ID"] . "'>" . $row["Name"] . "</a></td>";
                     echo "<td>" . $row["CountryCode"] . "</td>";
                     echo "<td>" . $row["District"] . "</td>";
                     echo "<td>" . $row["Population"] . "</td>";
-                    echo "<td><a href='deleteHandler.php?id=$id'>Excluir</a></td>";
+                    echo "<td><a href='deleteHandler.php?id=$id'>Delete</a></td>";
                     echo "</tr>";
                 }
                 ?>
@@ -85,7 +86,7 @@ a<!DOCTYPE html>
     }
     ?>
 
-        <!-- EXERCICIO
+    <!-- EXERCICIO
         Se a busca nao devolver resultados
         mostrem uma frase e uma imagem...
         a informar que nao existem cidades correspondentes a pesquisa
@@ -96,4 +97,3 @@ a<!DOCTYPE html>
 </body>
 
 </html>
-
