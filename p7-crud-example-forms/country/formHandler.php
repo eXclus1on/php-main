@@ -17,7 +17,7 @@
     $surfaceArea = isset($_POST["SurfaceArea"]) ? $_POST["SurfaceArea"] : "";
     $population = isset($_POST["Population"]) ? $_POST["Population"] : "";
     $localName = isset($_POST["LocalName"]) ? $_POST["LocalName"] : "";
-    $governmentForm = isset($_POST["GovernmentForm"]) ? $_POST["GovernmentForm"] : 0;
+    $governmentForm = isset($_POST["GovernmentForm"]) ? $_POST["GovernmentForm"] : "";
     $code2 = isset($_POST["Code2"]) ? $_POST["Code2"] : "";
 
     $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
