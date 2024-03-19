@@ -11,7 +11,7 @@
 
 <body>
     <?php
-    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
+    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3307);
     $statement = $mysqli->prepare("SELECT Code, Name FROM country");
     $statement->execute();
 
@@ -32,7 +32,7 @@
             </select><br>
             <input type="text" name="district" placeholder="District"><br>
             <input type="number" name="population" placeholder="Population"><br>
-            <button class="addCityButton">Add City</button>
+            <button class="addButton">Add City</button>
         </form>
     </div>
 </body>
