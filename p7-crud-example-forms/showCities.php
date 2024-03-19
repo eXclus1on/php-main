@@ -11,7 +11,7 @@
 
 <body>
     <?php
-    $mysqli = new mysqli("localhost", "root", "", "world", 3307);
+    $mysqli = new mysqli("localhost", "root", "", "world", 3306);
     $statement = $mysqli->prepare("SELECT * FROM city ORDER BY ID DESC LIMIT 20");
     $statement->execute();
 

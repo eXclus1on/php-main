@@ -3,7 +3,7 @@ $code = isset($_POST["code"]) ? $_POST["code"] : "";
 $name = isset($_POST["name"]) ? $_POST["name"] : "";
 $continent = isset($_POST["continent"]) ? $_POST["continent"] : "";
 
-$mysqli = new mysqli("127.0.0.1", "root", "", "world", 3307);
+$mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
 $statement = $mysqli->prepare("
 
        INSERT INTO country (Code, Name, Continent) VALUES (?, ?, ?)
