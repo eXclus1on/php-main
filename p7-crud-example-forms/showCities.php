@@ -15,7 +15,6 @@ $countryCode  = isset ($_GET['country']) ?  $_GET['country'] : '%'; // default c
 
     $mysqli = new mysqli("localhost", "root", "", "world", 3306);
     $statement = $mysqli->prepare("SELECT * FROM city WHERE CountryCode LIKE ? ORDER BY ID DESC");
-
     $statement -> bind_param("s" , $countryCode);
     $statement->execute();
 
