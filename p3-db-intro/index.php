@@ -34,7 +34,7 @@
 
     echo "<h1>Cities in $countryCode</h1>";
 
-    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
+    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3307);
     $result = $mysqli->query("SELECT * FROM city WHERE countryCode = '$countryCode'");
 
     echo "<ul>";

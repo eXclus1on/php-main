@@ -14,7 +14,7 @@
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
 
     // Create DB connection
-    $mysqli = new mysqli("localhost", "root", "", "world", 3306);
+    $mysqli = new mysqli("localhost", "root", "", "world", 3307);
 
     // Read City to edit based on ID
     $statement = $mysqli->prepare("SELECT * FROM city WHERE Id = ?");

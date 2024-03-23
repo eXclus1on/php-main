@@ -19,7 +19,7 @@
     </form>
 
     <?php
-    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
+    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3307);
     $statement = $mysqli->prepare("SELECT * FROM city WHERE Name LIKE ?");
 
     $searchBindParam = "%$searchTerm%";

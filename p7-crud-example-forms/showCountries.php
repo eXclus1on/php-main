@@ -11,7 +11,7 @@
 
 <body>
     <?php
-    $mysqli = new mysqli("localhost", "root", "", "world", 3306);
+    $mysqli = new mysqli("localhost", "root", "", "world", 3307);
     $statement = $mysqli->prepare("SELECT * FROM country");
     $statement->execute();
 
@@ -31,7 +31,8 @@
                 <?php while ($row = $result->fetch_assoc()) { ?>
                     <tr>
                         <td><?= $row['Code'] ?></td>
-                        <td><a  href="./showCities.php?country=<?=$row["Code"]?>"><?= $row['Name'] ?></a></td>
+                        <!-- <td><a href="./showCities.php?country=PRT">Portugal</a></td> -->
+                        <td><a href="./showCities.php?country=<?= $row['Code'] ?>"><?= $row['Name'] ?></a></td>
                         <td><?= $row['Continent'] ?></td>
                         <td><a href="#" class="editLink">✏️</a>
                             <a href="./countryDeleteHandler.php?code=<?= $row['Code'] ?>" class="deleteLink">❌</a>
