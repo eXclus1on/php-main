@@ -1,0 +1,12 @@
+#pageWrapper {
+    width: 900px;
+    margin: 20px auto 0;
+}
+
+.carAddForm {
+    float: right;
+}
+
+.deleteLink {
+    text-decoration: none !important;
+}
