@@ -7,8 +7,18 @@
     <?php require_once("./nav.php"); ?>
     <?php
 
-    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3306);
-    $statement = $mysqli->prepare("SELECT * FROM cars ORDER BY id DESC");
+    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3307);
+    $statement = $mysqli->prepare("
+    SELECT
+        cars.id,
+        plate,
+        color,
+        brands.name AS brand,
+        models.name AS model
+    FROM cars
+    JOIN models ON models.id = cars.model_id
+    JOIN brands ON brands.id = models.brand_id
+");
     $statement->execute();
 
     $result = $statement->get_result();

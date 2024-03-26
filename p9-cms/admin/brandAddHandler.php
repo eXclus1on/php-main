@@ -2,7 +2,7 @@
 $name = isset($_POST["name"]) ? $_POST["name"] : "";
 
 
-$mysqli = new mysqli("127.0.0.1", "root", "", "stand_used_cars", 3306);
+$mysqli = new mysqli("127.0.0.1", "root", "", "stand_used_cars", 3307);
 $statement = $mysqli->prepare("
 
        INSERT INTO brands (id, name) VALUES (NULL, ?)

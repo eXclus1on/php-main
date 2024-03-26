@@ -9,7 +9,7 @@
 
     $brand = isset($_GET["brand"]) ? $_GET["brand"] : "%";
 
-    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3306);
+    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3307);
     $statement = $mysqli->prepare("
     SELECT models.id, models.name, brands.name AS brand
     FROM models
