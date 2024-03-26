@@ -4,7 +4,7 @@ $countryCode = isset($_POST["countryCode"]) ? $_POST["countryCode"] : "";
 $district = isset($_POST["district"]) ? $_POST["district"] : "";
 $population = isset($_POST["population"]) ? $_POST["population"] : 0;
 
-$mysqli = new mysqli("127.0.0.1", "root", "", "world", 3307);
+$mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
 $statement = $mysqli->prepare("
 
        INSERT INTO city VALUES (NULL, ?, ?, ?, ?)

@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3307);
+    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
     $statement = $mysqli->prepare("SELECT Code, Name FROM country");
     $statement->execute();
 

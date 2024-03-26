@@ -20,7 +20,7 @@
     </form>
 
     <?php
-    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3307);
+    $mysqli = new mysqli("127.0.0.1", "root", "", "world", 3306);
     // DANGER: We should never concatenate directly could lead to SQL INJECTIONS
     // Use parametized queries instead
     $result = $mysqli->query("SELECT * FROM city WHERE Name LIKE '%$searchTerm%'");
