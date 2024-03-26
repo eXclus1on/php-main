@@ -9,7 +9,7 @@
 
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
 
-    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3307);
+    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3306);
 
     $statement = $mysqli->prepare("SELECT * FROM cars WHERE id = ?");
     $statement->bind_param("i", $id);

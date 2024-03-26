@@ -7,7 +7,7 @@
     <?php require_once("./nav.php"); ?>
     <?php
 
-    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3307);
+    $mysqli = new mysqli("localhost", "root", "", "stand_used_cars", 3306);
     $statement = $mysqli->prepare("SELECT * FROM cars ORDER BY id DESC");
     $statement->execute();
 
